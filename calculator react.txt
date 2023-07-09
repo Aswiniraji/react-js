@@ -1,0 +1,64 @@
+import { useState } from "react";
+import "./Form.css";
+
+const Form=()=>{
+
+  let [getchangeinput,setchangeinput]=useState(0);
+  let [getchangeinput1,setchangeinput1]=useState(0);
+  let [getchangeinput2,setchangeinput2]=useState(0);
+  let[getFlag,setFlag]=useState(false);
+
+const onInputChangeHandler1=(event)=>{ 
+
+    setchangeinput1(Number(event.target.value));
+
+}
+
+const onInputChangeHandler2=(event)=>{
+
+    setchangeinput2(Number(event.target.value));
+
+} 
+  
+const onAdditionHandler=()=>{
+
+    setchangeinput(getchangeinput1 + getchangeinput2);
+
+}
+const onSubstractionHandler=()=>{
+
+    setchangeinput(getchangeinput1 - getchangeinput2);
+
+}
+const onMultiplicationHandler=()=>{
+
+    setchangeinput(getchangeinput1 * getchangeinput2);
+
+}
+const onDivisionHandler=()=>{
+
+    setchangeinput(getchangeinput1 / getchangeinput2);
+
+}
+const onSubmitHandler=()=>{
+    setFlag( true);
+}
+  return(
+    <div>
+       
+        Value of A<input type="text" name="value of A" value={getchangeinput1} onChange={onInputChangeHandler1}/>
+        Value of B<input type="text" name="value of B" value={getchangeinput2} onChange={onInputChangeHandler2}/> 
+        <button onClick={onAdditionHandler}>Addition</button>
+        <button onClick={onSubstractionHandler}>Substractionn</button>
+        <button onClick={onMultiplicationHandler}>Multiplication</button>
+        <button onClick={onDivisionHandler}>Division</button>
+        <button onClick={onSubmitHandler}>Submit</button>
+        {getFlag?<h1>Result is: {getchangeinput}</h1>:null}  
+
+    </div>
+  )
+
+
+
+}
+export default Form;
